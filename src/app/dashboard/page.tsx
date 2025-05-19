@@ -332,6 +332,7 @@ function page() {
                 bgColor="#f4edfa"
                 headingFontSize={12}
                 subHeadingFontSize={14}
+                statsPercentage={false}
               />
               <SatisfactoryCard
                 satisfactionRatings={annualProjectionData}
