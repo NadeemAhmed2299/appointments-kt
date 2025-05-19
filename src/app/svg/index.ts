@@ -12,3 +12,10 @@ export {default as profileIcon} from "./common/sidenav/profile-icon.svg"
 export {default as cube} from "./dashboard/ai-powered/cube.svg"
 export {default as graph} from "./dashboard/ai-powered/graph.svg"
 export {default as people} from "./dashboard/ai-powered/people.svg"
+export {default as spikeIcon} from "./common/global/spike-icon.svg"
+export {default as spikeErrorIcon} from "./common/global/spike-error-icon.svg"
+export {default as manageResources} from "./dashboard/footer/manage-resources.svg"
+export {default as manageServices} from "./dashboard/footer/manage-services.svg"
+export {default as manageUsers} from "./dashboard/footer/manage-users.svg"
+
+

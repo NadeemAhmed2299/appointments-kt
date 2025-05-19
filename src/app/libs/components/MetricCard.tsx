@@ -2,8 +2,9 @@
 
 import React from 'react';
 import { Card, CardContent, Typography, Box } from '@mui/material';
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+
+import {spikeIcon, spikeErrorIcon} from "../../svg";
+import Image from 'next/image';
 
 interface MetricCardProps {
   title: string;
@@ -22,9 +23,9 @@ const MetricCard: React.FC<MetricCardProps> = ({ title, value, change, up, borde
         <Typography variant="h2" color="primary.main" fontWeight="700">{value}</Typography>
         <Box display="flex" alignItems="center" mt={0.5}>
           {up ? (
-            <ArrowUpwardIcon fontSize="small" color="success" />
+            <Image src={spikeIcon} alt="spike Icon" width={24} height={24} />
           ) : (
-            <ArrowDownwardIcon fontSize="small" color="error" />
+            <Image src={spikeErrorIcon} alt="spike Icon" width={24} height={24} />
           )}
           <Typography
             variant="caption"

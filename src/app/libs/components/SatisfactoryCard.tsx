@@ -1,5 +1,8 @@
-import { Box, Card, CardContent, Grid, Typography } from '@mui/material'
+import { Box, Grid, Typography } from '@mui/material'
+import Image from 'next/image';
 import React from 'react'
+
+import { spikeIcon, spikeErrorIcon } from "../../svg";
 
 interface SatisfactionRating {
     label: string;
@@ -19,7 +22,16 @@ interface SatisfactoryCardProps {
     isAnnualProjectionData?: boolean
 }
 
-const SatisfactoryCard: React.FC<SatisfactoryCardProps> = ({ satisfactionRatings, gridValue, bgColor, greenContent = false, headingFontSize = 12, subHeadingFontSize = 14, statsPercentage = true, isAnnualProjectionData = false }) => {
+const SatisfactoryCard: React.FC<SatisfactoryCardProps> = ({
+    satisfactionRatings,
+    gridValue,
+    bgColor,
+    greenContent = false,
+    headingFontSize = 12,
+    subHeadingFontSize = 14,
+    statsPercentage = true,
+    isAnnualProjectionData = false
+}) => {
     return (
         <Grid container spacing={1} sx={{ marginBottom: '20px' }}>
             {satisfactionRatings.map((rating, idx) => (
@@ -51,19 +63,30 @@ const SatisfactoryCard: React.FC<SatisfactoryCardProps> = ({ satisfactionRatings
                             )
                         ) : (
                             <>
-                                <Typography fontSize={headingFontSize} color='info.main'>{rating.label}</Typography>
-                                <Typography fontWeight="bold" fontSize={subHeadingFontSize}>{rating.value}</Typography>
-                                {statsPercentage && <Typography
-                                    variant="caption"
-                                    fontSize={10}
-                                    color={rating.danger ? 'error.main' : 'success.main'}
-                                >
-                                    {rating.change}
-                                </Typography>}
+                                <Typography fontSize={headingFontSize} color='info.main'>
+                                    {rating.label}
+                                </Typography>
+                                <Typography fontWeight="bold" fontSize={subHeadingFontSize}>
+                                    {rating.value}
+                                </Typography>
+                                {statsPercentage && (
+                                    <Box display="flex" alignItems="center">
+                                        {!rating.danger ? (
+                                            <Image src={spikeIcon} alt="spike Icon" width={12} height={12} />
+                                        ) : (
+                                            <Image src={spikeErrorIcon} alt="spike Icon" width={12} height={12} />
+                                        )}
+                                        <Typography
+                                            variant="caption"
+                                            fontSize={10}
+                                            color={rating.danger ? 'error.main' : 'success.main'}
+                                        >
+                                            {rating.change}
+                                        </Typography>
+                                    </Box>
+                                )}
                             </>
                         )}
-
-
                     </Box>
                 </Grid>
             ))}

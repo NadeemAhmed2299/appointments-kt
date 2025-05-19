@@ -1,10 +1,11 @@
 'use client';
 
 import { Card, CardContent, Typography, Box } from '@mui/material';
+import Image from 'next/image';
 import { ReactNode } from 'react';
 
 type DashboardCardProps = {
-  icon: ReactNode;
+  icon: string;
   label: string;
   onClick?: () => void;
 };
@@ -24,7 +25,9 @@ const DashboardFooterCard = ({ icon, label, onClick }: DashboardCardProps) => {
       }}
     >
       <CardContent sx={{ textAlign: 'center' }}>
-        <Box sx={{ mb: 2, fontSize: 40 }}>{icon}</Box>
+        <Box sx={{ mb: 2, fontSize: 40 }}>
+          <Image src={icon} alt="footer Icon" />
+        </Box>
         <Typography variant="subtitle1" fontWeight={500}>
           {label}
         </Typography>

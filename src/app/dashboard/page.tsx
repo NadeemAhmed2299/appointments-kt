@@ -46,10 +46,10 @@ const caseDataset = [
 ];
 
 const satisfactionRatings = [
-  { label: 'Provider Satisfaction', value: '3.85', change: '+0.35' },
-  { label: 'Nurse Satisfaction', value: '4.15', change: '+0.45' },
-  { label: 'Admin Satisfaction', value: '4.25', change: '+0.31' },
-  { label: 'Avg Wait Time', value: '12 min', change: '-3 min', danger: true },
+  { label: 'Provider Satisfaction', value: '3.85', change: '0.35' },
+  { label: 'Nurse Satisfaction', value: '4.15', change: '0.45' },
+  { label: 'Admin Satisfaction', value: '4.25', change: '0.31' },
+  { label: 'Avg Wait Time', value: '12 min', change: '3 min', danger: true },
 ];
 
 const satisfactionRatingsGreen = [
