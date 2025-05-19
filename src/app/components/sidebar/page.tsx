@@ -1,6 +1,6 @@
 'use client';
 
-import React, { JSX, useEffect, useTransition } from 'react';
+import React, { useEffect, useState, useTransition } from 'react';
 import {
   IconButton,
   List,
@@ -10,7 +10,6 @@ import {
   ListItemText,
   useMediaQuery,
   useTheme,
-  Typography,
   Backdrop,
   CircularProgress,
   Divider,
@@ -103,7 +102,7 @@ const navItems = [
 
 export default function Sidebar() {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -115,11 +114,6 @@ export default function Sidebar() {
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
-
-  // Set initial drawer state only after mount
-  useEffect(() => {
-    setOpen(!isMobile);
-  }, [isMobile]);
 
   const handleNavigation = (path: string) => {
     startTransition(() => {

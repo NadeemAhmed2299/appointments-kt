@@ -150,6 +150,19 @@ const dataPointsEfficiencyTrends = [5, 20, 35, 55, 70, 83, 87];
 
 const valueFormatter = (item: { value: number }) => `${item.value}`;
 
+const laborCostData = [
+  { label: 'Labor Cost Savings', value: '$3,260/mo', change: '' },
+  { label: 'Increased Capacity', value: '+8.5%', change: '' }
+];
+
+const annualProjectionData = [
+  {
+    label: 'Annual Projection',
+    value: '$39,120 staff savings',
+    change: '$142,000 additional revenue',
+  },
+];
+
 function page() {
   return (
     <>
@@ -211,7 +224,7 @@ function page() {
             <CardContent>
               <Typography variant="h3" color='primary.main' fontWeight={700} mb={3}>Satisfaction Ratings</Typography>
               <SatisfactoryCard satisfactionRatings={satisfactionRatings} gridValue={3} bgColor='#7F56D91A' />
-              <SatisfactoryCard satisfactionRatings={satisfactionRatingsGreen} gridValue={6} bgColor='#00b69b1a' singleContent={true} />
+              <SatisfactoryCard satisfactionRatings={satisfactionRatingsGreen} gridValue={6} bgColor='#00b69b1a' greenContent={true} />
             </CardContent>
           </Card>
         </Grid>
@@ -313,8 +326,22 @@ function page() {
           <Card sx={{ borderRadius: '12px', boxShadow: 'none' }} >
             <CardContent>
               <Typography variant="h3" color='primary.main' fontWeight={700} mb={3}>Satisfaction Ratings</Typography>
-              <SatisfactoryCard satisfactionRatings={satisfactionRatings} gridValue={3} bgColor='#7F56D91A' />
-              <SatisfactoryCard satisfactionRatings={satisfactionRatingsGreen} gridValue={6} bgColor='#00b69b1a' singleContent={true} />
+              <SatisfactoryCard
+                satisfactionRatings={laborCostData}
+                gridValue={6}
+                bgColor="#f4edfa"
+                headingFontSize={12}
+                subHeadingFontSize={14}
+              />
+              <SatisfactoryCard
+                satisfactionRatings={annualProjectionData}
+                gridValue={12}
+                bgColor="#e6f6f4"
+                greenContent= {true}
+                headingFontSize={20}
+                subHeadingFontSize={18}
+                isAnnualProjectionData = {true}
+              />
             </CardContent>
           </Card>
         </Grid>

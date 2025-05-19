@@ -12,36 +12,54 @@ interface SatisfactoryCardProps {
     satisfactionRatings: SatisfactionRating[];
     gridValue: number;
     bgColor: string;
-    singleContent?: boolean
+    greenContent?: boolean,
+    headingFontSize?: number,
+    subHeadingFontSize?: number,
+    statsPercentage?: boolean,
+    isAnnualProjectionData?: boolean
 }
 
-const SatisfactoryCard: React.FC<SatisfactoryCardProps> = ({ satisfactionRatings, gridValue, bgColor, singleContent = false }) => {
+const SatisfactoryCard: React.FC<SatisfactoryCardProps> = ({ satisfactionRatings, gridValue, bgColor, greenContent = false, headingFontSize = 12, subHeadingFontSize = 14, statsPercentage = true, isAnnualProjectionData = false }) => {
     return (
         <Grid container spacing={1} sx={{ marginBottom: '20px' }}>
             {satisfactionRatings.map((rating, idx) => (
                 <Grid size={{ xs: 12, sm: gridValue, md: gridValue }} key={idx}>
                     <Box
-                        p={1}                        
+                        p={1}
                         bgcolor={bgColor}
                         border={'1px solid'}
-                        borderColor={`${singleContent?'success.main':'info.main'}`}
-                        sx={{ borderRadius: '12px'}}
+                        borderColor={`${greenContent ? 'success.main' : 'info.main'}`}
+                        sx={{ borderRadius: '12px' }}
                     >
-                        {singleContent ? (
-                            <Typography fontWeight="600" fontSize={14} color='success.main'>
-                                {rating.label} {rating.value} {rating.change}
-                            </Typography>
+                        {greenContent ? (
+                            isAnnualProjectionData ? (
+                                <>
+                                    <Typography fontWeight="700" fontSize={subHeadingFontSize} color='success.main' sx={{ mb: 1 }}>
+                                        {rating.label}
+                                    </Typography>
+                                    <Typography fontWeight="600" fontSize={headingFontSize} color='success.main'>
+                                        {rating.value}
+                                    </Typography>
+                                    <Typography fontWeight="600" fontSize={headingFontSize} color='success.main'>
+                                        {rating.change}
+                                    </Typography>
+                                </>
+                            ) : (
+                                <Typography fontWeight="600" fontSize={headingFontSize} color='success.main'>
+                                    {rating.label} {rating.value} {rating.change}
+                                </Typography>
+                            )
                         ) : (
                             <>
-                                <Typography fontSize={12}>{rating.label}</Typography>
-                                <Typography fontWeight="bold" fontSize={14}>{rating.value}</Typography>
-                                <Typography
+                                <Typography fontSize={headingFontSize} color='info.main'>{rating.label}</Typography>
+                                <Typography fontWeight="bold" fontSize={subHeadingFontSize}>{rating.value}</Typography>
+                                {statsPercentage && <Typography
                                     variant="caption"
                                     fontSize={10}
                                     color={rating.danger ? 'error.main' : 'success.main'}
                                 >
                                     {rating.change}
-                                </Typography>
+                                </Typography>}
                             </>
                         )}
 
